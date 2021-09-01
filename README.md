@@ -3,12 +3,12 @@ Spotify Clone
 
 Um reprodutor de musica android kotlin parecido com o Spotify.
 
-Objetivos
+**Objetivos**
 
 Aprender e desenvolver tecnicas de desenvolvimento mobile android focado em tarefas em segundo plano, reprodutor de musica na notificação e multitarefas. 
 Se aprofundar no Firebase.
 
-Ferramentas
+**Ferramentas**
 
 Arquitetura MVVM
 
@@ -21,7 +21,7 @@ Dagger-Hilt
 MediaBrowserService
 
 
-Extras
+**Extras**
 
 Playlist personaizada pela preferencia do usuario, como musicas mais tocadas e favoritos.
 Velocidade de audio.
