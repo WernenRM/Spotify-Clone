@@ -1,7 +1,7 @@
 package com.wernen.spotifyclone.data.entities
 
 import com.google.firebase.firestore.FirebaseFirestore
-import com.wernen.spotifyclone.Constants.SONG_COLLECTION
+import com.wernen.spotifyclone.Others.Constants.SONG_COLLECTION
 import kotlinx.coroutines.tasks.await
 
 class MusicDatabase {

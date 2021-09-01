@@ -1,4 +1,4 @@
-package com.wernen.spotifyclone
+package com.wernen.spotifyclone.Others
 
 object Constants {
 
