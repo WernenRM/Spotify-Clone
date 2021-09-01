@@ -11,9 +11,13 @@ Se aprofundar no Firebase.
 Ferramentas
 
 Arquitetura MVVM
+
 Kotlin 
+
 Firebase
+
 Dagger-Hilt
+
 MediaBrowserService
 
 
