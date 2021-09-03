@@ -4,7 +4,7 @@ import android.app.Notification
 import android.content.Intent
 import androidx.core.content.ContextCompat
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
-import com.wernen.spotifyclone.Others.Constants.NOTIFICATION_ID
+import com.wernen.spotifyclone.others.Constants.NOTIFICATION_ID
 import com.wernen.spotifyclone.exoplayer.MusicService
 
 

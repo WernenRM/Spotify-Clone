@@ -11,8 +11,8 @@ import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
-import com.wernen.spotifyclone.Others.Constants.NOTIFICATION_CHANNEL_ID
-import com.wernen.spotifyclone.Others.Constants.NOTIFICATION_ID
+import com.wernen.spotifyclone.others.Constants.NOTIFICATION_CHANNEL_ID
+import com.wernen.spotifyclone.others.Constants.NOTIFICATION_ID
 import com.wernen.spotifyclone.R
 
 class MusicNotificationManager(
