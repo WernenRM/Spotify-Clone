@@ -1,4 +1,4 @@
-package callbacks
+package com.wernen.spotifyclone.callbacks
 
 import android.widget.Toast
 import com.google.android.exoplayer2.ExoPlaybackException

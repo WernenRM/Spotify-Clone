@@ -1,4 +1,4 @@
-package callbacks
+package com.wernen.spotifyclone.callbacks
 
 import android.net.Uri
 import android.os.Bundle

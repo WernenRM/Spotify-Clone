@@ -8,9 +8,9 @@ import android.support.v4.media.MediaDescriptionCompat
 import android.support.v4.media.MediaMetadataCompat
 import android.support.v4.media.session.MediaSessionCompat
 import androidx.media.MediaBrowserServiceCompat
-import callbacks.MusicPlaybackPreparer
-import callbacks.MusicPlayerEventListener
-import callbacks.MusicPlayerNotificationListener
+import com.wernen.spotifyclone.callbacks.MusicPlaybackPreparer
+import com.wernen.spotifyclone.callbacks.MusicPlayerEventListener
+import com.wernen.spotifyclone.callbacks.MusicPlayerNotificationListener
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector

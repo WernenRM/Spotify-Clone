@@ -1,4 +1,4 @@
-package callbacks
+package com.wernen.spotifyclone.callbacks
 
 import android.app.Notification
 import android.content.Intent
