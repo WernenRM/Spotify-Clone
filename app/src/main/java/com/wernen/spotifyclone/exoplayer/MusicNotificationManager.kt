@@ -10,10 +10,13 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.ui.*
 import com.google.android.exoplayer2.ui.PlayerNotificationManager
+import com.google.android.exoplayer2.util.NotificationUtil
+import com.google.android.exoplayer2.util.NotificationUtil.createNotificationChannel
+import com.wernen.spotifyclone.R
 import com.wernen.spotifyclone.others.Constants.NOTIFICATION_CHANNEL_ID
 import com.wernen.spotifyclone.others.Constants.NOTIFICATION_ID
-import com.wernen.spotifyclone.R
 
 class MusicNotificationManager(
     private val context: Context,
@@ -22,26 +25,21 @@ class MusicNotificationManager(
     private val newSongCallback: () -> Unit
 ) {
 
-    private val notificationManager: PlayerNotificationManager
+    private val  notificationManager: PlayerNotificationManager
+        get() {
+            TODO()
+        }
 
     init {
         val mediaController = MediaControllerCompat(context, sessionToken)
-        notificationManager = PlayerNotificationManager.createWithNotificationChannel(
-            context,
-            NOTIFICATION_CHANNEL_ID,
-            R.string.notification_channel_name,
-            R.string.notification_channel_description,
-            NOTIFICATION_ID,
-            DescriptionAdapter(mediaController),
-            notificationListener
-        ).apply {
-            setSmallIcon(R.drawable.ic_music)
-            setMediaSessionToken(sessionToken)
-        }
+
+        val notificationManager2 = createNotificationChannel(
+            context, NOTIFICATION_CHANNEL_ID, R.string.notification_channel_name,
+        R.string.notification_channel_description, NotificationUtil.IMPORTANCE_HIGH)
     }
 
     fun showNotification(player: Player) {
-        notificationManager.setPlayer(player)
+       notificationManager.setPlayer(player)
     }
 
     private inner class DescriptionAdapter(
@@ -49,6 +47,7 @@ class MusicNotificationManager(
     ) : PlayerNotificationManager.MediaDescriptionAdapter {
 
         override fun getCurrentContentTitle(player: Player): CharSequence {
+            newSongCallback()
             return mediaController.metadata.description.title.toString()
         }
 
@@ -79,4 +78,5 @@ class MusicNotificationManager(
             return null
         }
     }
+
 }
