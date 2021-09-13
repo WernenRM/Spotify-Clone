@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.wernen.spotifyclone.R
+import com.wernen.spotifyclone.adapters.SwipeSongAdapter
 import com.wernen.spotifyclone.exoplayer.MusicServiceConnection
 import dagger.Module
 import dagger.Provides
@@ -25,6 +26,10 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideSwipeSongAdapter() = SwipeSongAdapter()
+
+    @Singleton
+    @Provides
     fun provideGlideInstance(
         @ApplicationContext context: Context
     ) = Glide.with(context).setDefaultRequestOptions(
@@ -33,5 +38,4 @@ object AppModule {
             .error(R.drawable.ic_baseline_image)
             .diskCacheStrategy(DiskCacheStrategy.DATA)
     )
-
 }

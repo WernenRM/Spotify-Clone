@@ -1,4 +1,4 @@
-package com.wernen.spotifyclone.viewModel
+package com.wernen.spotifyclone.ui.viewModel
 
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_ID
@@ -13,8 +13,11 @@ import com.wernen.spotifyclone.exoplayer.isPlaying
 import com.wernen.spotifyclone.exoplayer.isPrepared
 import com.wernen.spotifyclone.others.Constants.MEDIA_ROOT_ID
 import com.wernen.spotifyclone.others.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class MainViewModel @ViewModelInject constructor(private val musicServiceConnection: MusicServiceConnection): ViewModel()
+@HiltViewModel
+ class MainViewModel @Inject constructor (private val musicServiceConnection: MusicServiceConnection): ViewModel()
 
 {
     private  val _mediaItems = MutableLiveData<Resource<List<Song>>>()
