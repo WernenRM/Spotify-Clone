@@ -12,10 +12,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import android.os.Bundle
 import android.support.v4.media.session.PlaybackStateCompat
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.RequestManager
 import com.google.android.material.snackbar.Snackbar
+import com.wernen.spotifyclone.adapters.SwipeSongAdapter2
 import com.wernen.spotifyclone.exoplayer.isPlaying
 import javax.inject.Inject
 
@@ -26,8 +28,11 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
 
+//    @Inject
+//    lateinit var swipeSongAdapter: SwipeSongAdapter
+
     @Inject
-    lateinit var swipeSongAdapter: SwipeSongAdapter
+    lateinit var swipeSongAdapter: SwipeSongAdapter2
 
     @Inject
     lateinit var glide: RequestManager
@@ -38,8 +43,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         subscribeToObservers()
 
@@ -49,9 +56,9 @@ class MainActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if(playbackState?.isPlaying == true) {
-                    mainViewModel.playOrToggleSong(swipeSongAdapter.songs[position])
+                    mainViewModel.playOrToggleSong(swipeSongAdapter.data[position])
                 } else {
-                    curPlayingSong = swipeSongAdapter.songs[position]
+                    curPlayingSong = swipeSongAdapter.data[position]
                 }
             }
         })
@@ -61,10 +68,36 @@ class MainActivity : AppCompatActivity() {
                 mainViewModel.playOrToggleSong(it, true)
             }
         }
+
+//        swipeSongAdapter.setItemClickListener {
+//            navHostFragment.findNavController().navigate(
+//                R.id.globalActionToSongFragment
+//            )
+//        }
+//
+//        navHostFragment.findNavController().addOnDestinationChangedListener { _, destination, _ ->
+//            when(destination.id) {
+//                R.id.songFragment -> hideBottomBar()
+//                R.id.homeFragment -> showBottomBar()
+//                else -> showBottomBar()
+//            }
+//        }
+    }
+
+    private fun hideBottomBar() {
+        binding.ivCurSongImage.isVisible = false
+        binding.vpSong.isVisible = false
+        binding.ivPlayPause.isVisible = false
+    }
+
+    private fun showBottomBar() {
+        binding.ivCurSongImage.isVisible = true
+        binding.vpSong.isVisible = true
+        binding.ivPlayPause.isVisible = true
     }
 
     private fun switchViewPagerToCurrentSong(song: Song) {
-        val newItemIndex = swipeSongAdapter.songs.indexOf(song)
+        val newItemIndex = swipeSongAdapter.data.indexOf(song)
         if (newItemIndex != -1) {
             binding.vpSong.currentItem = newItemIndex
             curPlayingSong = song
@@ -77,7 +110,9 @@ class MainActivity : AppCompatActivity() {
                 when (result.status) {
                     Status.SUCCESS -> {
                         result.data?.let { songs ->
-                            swipeSongAdapter.songs = songs
+//                            swipeSongAdapter.song = songs
+
+                            swipeSongAdapter.addall(songs.toCollection(ArrayList()))
                             if (songs.isNotEmpty()) {
                                 glide.load((curPlayingSong ?: songs[0]).imageUrl)
                                     .into(binding.ivCurSongImage)

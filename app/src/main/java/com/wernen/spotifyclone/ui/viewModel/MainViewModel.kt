@@ -2,6 +2,7 @@ package com.wernen.spotifyclone.ui.viewModel
 
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaMetadataCompat.METADATA_KEY_MEDIA_ID
+import android.util.Log
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -29,6 +30,8 @@ import javax.inject.Inject
     val playbackState = musicServiceConnection.playbackState
 
     init {
+
+        Log.e("Debug 1", "teste")
         _mediaItems.postValue(Resource.loading(null))
         musicServiceConnection.subscribe(MEDIA_ROOT_ID, object : MediaBrowserCompat.SubscriptionCallback() {
             override fun onChildrenLoaded(
@@ -45,7 +48,9 @@ import javax.inject.Inject
                         it.description.iconUri.toString()
                     )
                 }
+                Log.e("Debug 1", "$items")
                 _mediaItems.postValue(Resource.success(items))
+
             }
         })
     }

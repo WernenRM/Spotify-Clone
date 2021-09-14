@@ -7,6 +7,7 @@ import com.wernen.spotifyclone.databinding.SwipeItemBinding
 class SwipeSongAdapter : BaseSongAdapter(R.layout.swipe_item) {
 
     override val differ = AsyncListDiffer(this, diffCallback)
+
     private var _binding: SwipeItemBinding? = null
     private val binding: SwipeItemBinding get() = _binding!!
 
