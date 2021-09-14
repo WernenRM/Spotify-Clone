@@ -18,6 +18,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:background="@color/black"
+        tools:listitem="@layout/list_item"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:id="@+id/rvAllSongs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

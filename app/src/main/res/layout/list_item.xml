@@ -15,6 +15,7 @@
         />
 
     <com.google.android.material.textview.MaterialTextView
+        android:textColor="@color/white"
         android:id="@+id/tvPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -30,6 +31,7 @@
         tools:ignore="RtlHardcoded" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:textColor="@color/gray"
         android:id="@+id/tvSecondary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

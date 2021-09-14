@@ -15,4 +15,6 @@
     <string name="playlist_title">Playlist Title</string>
     <string name="_100_songs">100 Songs</string>
     <string name="title">Title</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

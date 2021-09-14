@@ -6,6 +6,9 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
+
+        android:background="@color/darkBackground"
+        android:textColor="@color/white"
         android:id="@+id/tvPrimary"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

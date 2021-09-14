@@ -11,6 +11,10 @@
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#08FF04</color>
     <color name="mediumDarkBackground">#303030</color>
-    <color name="darkBackground">#202020</color>
+    <color name="darkBackground">#151515</color>
     <color name="lightBackground">#404040</color>
+    <color name="dark_gray">#A9A9A9</color>
+    <color name="gray">#808080</color>
+    <color name="grey21">#1C1C1C</color>
+
 </resources>
