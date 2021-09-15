@@ -32,6 +32,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:textColor="@color/white"
         android:id="@+id/tvCurTime"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
@@ -52,6 +53,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <com.google.android.material.textview.MaterialTextView
+        android:textColor="@color/white"
         android:id="@+id/tvSongDuration"
         android:layout_width="50dp"
         android:layout_height="wrap_content"

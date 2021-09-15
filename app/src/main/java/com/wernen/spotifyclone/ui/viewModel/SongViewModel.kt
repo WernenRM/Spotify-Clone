@@ -9,10 +9,13 @@ import com.wernen.spotifyclone.exoplayer.MusicService
 import com.wernen.spotifyclone.exoplayer.MusicServiceConnection
 import com.wernen.spotifyclone.exoplayer.currentPlaybackPosition
 import com.wernen.spotifyclone.others.Constants.UPDATE_PLAYER_POSITION_INTERVAL
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class SongViewModel @ViewModelInject constructor(
+@HiltViewModel
+class SongViewModel @Inject constructor(
     musicServiceConnection: MusicServiceConnection
 ) : ViewModel() {
 
