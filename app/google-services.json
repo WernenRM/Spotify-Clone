@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "773921361833",
+    "project_id": "spotifycloneyt-af0b5",
+    "storage_bucket": "spotifycloneyt-af0b5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773921361833:android:a23cf33358f7f071267eb8",
+        "android_client_info": {
+          "package_name": "com.plcoding.spotifycloneyt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773921361833-6rk64f1isnjfe1h4jtrd4jca0fmsb3mf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuFDUeaE_Is4yqNlabCvH4r4SkYjhGNQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773921361833-6rk64f1isnjfe1h4jtrd4jca0fmsb3mf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:773921361833:android:bb5f2c3ae31eb90b267eb8",
+        "android_client_info": {
+          "package_name": "com.wernen.spotifyclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "773921361833-6rk64f1isnjfe1h4jtrd4jca0fmsb3mf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuFDUeaE_Is4yqNlabCvH4r4SkYjhGNQ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "773921361833-6rk64f1isnjfe1h4jtrd4jca0fmsb3mf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
