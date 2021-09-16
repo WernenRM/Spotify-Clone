@@ -2,6 +2,7 @@ package com.wernen.spotifyclone.ui.fragments
 
 import android.os.Bundle
 import android.support.v4.media.session.PlaybackStateCompat
+import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +10,15 @@ import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
 import com.wernen.spotifyclone.R
 import com.wernen.spotifyclone.data.entities.Song
 import com.wernen.spotifyclone.databinding.FragmentSongBinding
 import com.wernen.spotifyclone.exoplayer.isPlaying
 import com.wernen.spotifyclone.exoplayer.toSong
+import com.wernen.spotifyclone.others.LoadingDialog
 import com.wernen.spotifyclone.others.Status
 import com.wernen.spotifyclone.ui.viewModel.MainViewModel
 import com.wernen.spotifyclone.ui.viewModel.SongViewModel
@@ -35,6 +39,10 @@ class SongFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
     lateinit var songViewModel: SongViewModel
+
+
+
+    val loadingDialog = LoadingDialog()
 
 
     private val binding: FragmentSongBinding by lazy {
@@ -59,6 +67,11 @@ class SongFragment : Fragment() {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
 
         subscribeToObservers()
+
+        binding.backBottom.setOnClickListener{
+            view.findNavController().navigate(R.id.action_songFragment_to_homeFragment)
+        }
+
 
         binding.ivPlayPauseDetail.setOnClickListener {
             curPlayingSong?.let {
@@ -92,6 +105,20 @@ class SongFragment : Fragment() {
         binding.ivSkip.setOnClickListener {
             mainViewModel.skipToNextSong()
         }
+
+        binding.imageView.setOnClickListener{
+            songViewModel.buttonEyeClicked()
+        }
+
+        songViewModel.hideFavorite.observe(requireActivity(), { hideBalance ->
+            if (hideBalance) {
+
+                binding.imageView.setImageResource(R.drawable.ic_favorite_full)
+
+            } else {
+                binding.imageView.setImageResource(R.drawable.ic_favorite)
+            }
+        })
     }
 
     private fun updateTitleAndSongImage(song: Song) {

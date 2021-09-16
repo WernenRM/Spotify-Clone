@@ -24,6 +24,9 @@ import javax.inject.Inject
     private  val _mediaItems = MutableLiveData<Resource<List<Song>>>()
     val mediaItems: LiveData<Resource<List<Song>>> = _mediaItems
 
+    private val _loading = MutableLiveData<Boolean>(true)
+    val loading: LiveData<Boolean> = _loading
+
     val isConnected = musicServiceConnection.isConnected
     val networkError = musicServiceConnection.networkError
     val curPlayingSong = musicServiceConnection.curPlayingSong
@@ -31,8 +34,8 @@ import javax.inject.Inject
 
     init {
 
-        Log.e("Debug 1", "teste")
         _mediaItems.postValue(Resource.loading(null))
+        _loading.postValue(true)
         musicServiceConnection.subscribe(MEDIA_ROOT_ID, object : MediaBrowserCompat.SubscriptionCallback() {
             override fun onChildrenLoaded(
                 parentId: String,
@@ -40,6 +43,7 @@ import javax.inject.Inject
             ) {
                 super.onChildrenLoaded(parentId, children)
                 val items = children.map {
+                    _loading.postValue(true)
                     Song(
                         it.mediaId!!,
                         it.description.title.toString(),
@@ -48,9 +52,8 @@ import javax.inject.Inject
                         it.description.iconUri.toString()
                     )
                 }
-                Log.e("Debug 1", "$items")
+                _loading.postValue(false)
                 _mediaItems.postValue(Resource.success(items))
-
             }
         })
     }

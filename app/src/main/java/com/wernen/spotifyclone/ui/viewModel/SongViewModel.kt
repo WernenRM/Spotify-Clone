@@ -28,6 +28,10 @@ class SongViewModel @Inject constructor(
     private val _curPlayerPosition = MutableLiveData<Long>()
     val curPlayerPosition: LiveData<Long> = _curPlayerPosition
 
+
+    private var _hideFavorite = MutableLiveData<Boolean>().apply { postValue(false) }
+    val  hideFavorite: LiveData<Boolean> =  _hideFavorite
+
     init {
         updateCurrentPlayerPosition()
     }
@@ -44,6 +48,11 @@ class SongViewModel @Inject constructor(
             }
         }
     }
+
+    fun buttonEyeClicked(){
+        _hideFavorite.postValue( _hideFavorite.value?.not())
+    }
+
 }
 
 

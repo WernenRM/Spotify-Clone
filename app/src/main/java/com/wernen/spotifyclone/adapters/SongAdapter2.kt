@@ -39,9 +39,14 @@ class SongAdapter2(var data: ArrayList<Song> = arrayListOf()) :
         return data.count()
     }
 
+    fun clearAll(data: ArrayList<Song>){
+        this.data.clear()
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     fun addall(data: ArrayList<Song>) {
 
+        clearAll(data)
         this.data.addAll(data)
 
         notifyDataSetChanged()

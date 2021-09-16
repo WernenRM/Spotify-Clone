@@ -23,6 +23,10 @@ class SwipeSongAdapter2( val data: ArrayList<Song> = arrayListOf()) :
 
         val song = data[position]
         holder.bind(song)
+
+        holder.itemView.setOnClickListener{
+            onItemClickListener?.invoke(song)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -36,7 +40,11 @@ class SwipeSongAdapter2( val data: ArrayList<Song> = arrayListOf()) :
 
         notifyDataSetChanged()
     }
+    var onItemClickListener: ((Song) -> Unit)? = null
 
+    fun setItemClickListener(listener: (Song) -> Unit) {
+        onItemClickListener = listener
+    }
 
     class SwipeSongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
@@ -44,7 +52,9 @@ class SwipeSongAdapter2( val data: ArrayList<Song> = arrayListOf()) :
 
         fun bind(song: Song) {
 
-            binding.tvPrimary.text =  song.title
+            val text = "${song.title} - ${song.subtitle}"
+            binding.tvPrimary.text = text
+
         }
     }
 }
