@@ -16,4 +16,12 @@ class MusicDatabase {
             emptyList()
         }
     }
+
+    suspend fun getFavoriteSongs(): List<FavoriteSons> {
+        return try {
+            songCollection.get().await().toObjects(FavoriteSons::class.java)
+        } catch(e: Exception) {
+            emptyList()
+        }
+    }
 }

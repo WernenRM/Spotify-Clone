@@ -35,7 +35,7 @@ import javax.inject.Inject
     init {
 
         _mediaItems.postValue(Resource.loading(null))
-        _loading.postValue(true)
+//        _loading.postValue(true)
         musicServiceConnection.subscribe(MEDIA_ROOT_ID, object : MediaBrowserCompat.SubscriptionCallback() {
             override fun onChildrenLoaded(
                 parentId: String,
@@ -43,7 +43,7 @@ import javax.inject.Inject
             ) {
                 super.onChildrenLoaded(parentId, children)
                 val items = children.map {
-                    _loading.postValue(true)
+                   // _loading.postValue(true)
                     Song(
                         it.mediaId!!,
                         it.description.title.toString(),
@@ -52,7 +52,7 @@ import javax.inject.Inject
                         it.description.iconUri.toString()
                     )
                 }
-                _loading.postValue(false)
+                //_loading.postValue(false)
                 _mediaItems.postValue(Resource.success(items))
             }
         })

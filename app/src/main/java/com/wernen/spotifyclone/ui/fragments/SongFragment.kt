@@ -14,6 +14,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.RequestManager
 import com.wernen.spotifyclone.R
+import com.wernen.spotifyclone.data.entities.FavoriteSons
 import com.wernen.spotifyclone.data.entities.Song
 import com.wernen.spotifyclone.databinding.FragmentSongBinding
 import com.wernen.spotifyclone.exoplayer.isPlaying
@@ -26,6 +27,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
+import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class SongFragment : Fragment() {
@@ -51,6 +53,8 @@ class SongFragment : Fragment() {
     }
 
     private var curPlayingSong: Song? = null
+
+    private var favoriteSons = arrayListOf<Song?>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -108,12 +112,15 @@ class SongFragment : Fragment() {
 
         binding.imageView.setOnClickListener{
             songViewModel.buttonEyeClicked()
+
         }
 
         songViewModel.hideFavorite.observe(requireActivity(), { hideBalance ->
             if (hideBalance) {
 
                 binding.imageView.setImageResource(R.drawable.ic_favorite_full)
+                favoriteSons.add(curPlayingSong)
+                val teste = 1
 
             } else {
                 binding.imageView.setImageResource(R.drawable.ic_favorite)

@@ -78,13 +78,13 @@ class HomeFragment : Fragment() {
             }
         }
 
-        mainViewModel.loading.observe(viewLifecycleOwner, { isLoading ->
-            if (isLoading) {
-                loadingDialog.startLoadingDialog(requireActivity())
-            } else {
-                loadingDialog.dismissDialog()
-            }
-        })
+//        mainViewModel.loading.observe(viewLifecycleOwner, { isLoading ->
+//            if (isLoading) {
+//                loadingDialog.startLoadingDialog(requireActivity())
+//            } else {
+//                loadingDialog.dismissDialog()
+//            }
+//        })
 
     }
 }

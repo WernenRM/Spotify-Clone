@@ -20,6 +20,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.RequestManager
@@ -63,6 +64,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -87,22 +90,22 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-
         binding.ivPlayPause.setOnClickListener {
             curPlayingSong?.let {
                 mainViewModel.playOrToggleSong(it, true)
             }
         }
 
-
-
-//        binding.flFragmentContainer.findNavController().addOnDestinationChangedListener { _, destination, _ ->
-//            when(destination.id) {
-//                R.id.songFragment -> hideBottomBar()
-//                R.id.homeFragment -> showBottomBar()
-//                else -> showBottomBar()
-//            }
-//        }
+         //val navController = findNavController( R.id.flFragmentContainer )
+        val navFragment = supportFragmentManager.findFragmentById(R.id.flFragmentContainer) as NavHostFragment
+        val navController = navFragment.navController
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            if(destination.id == R.id.songFragment) {
+                hideBottomBar()
+            } else {
+                showBottomBar()
+            }
+        }
     }
 
     private fun hideBottomBar() {
