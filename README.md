@@ -14,15 +14,28 @@ Arquitetura MVVM
 
 Kotlin 
 
+Coroutines
+
 Firebase
 
 Dagger-Hilt
 
+ExoPlayer
+
+PlayerNotificationManager
+
 MediaBrowserService
+
+MediaSessionCompat
+
+Glide
+
+RecyclerView
+
+ViewPager
 
 
 **Extras**
 
 Playlist personaizada pela preferencia do usuario, como musicas mais tocadas e favoritos.
 
-Velocidade de audio.
