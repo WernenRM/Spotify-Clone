@@ -1,7 +1,6 @@
 
 package com.wernen.spotifyclone.ui.fragments
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,12 +8,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.wernen.spotifyclone.R
-import com.wernen.spotifyclone.adapters.SongAdapter2
-import com.wernen.spotifyclone.adapters.SwipeSongAdapter
+import com.wernen.spotifyclone.adapters.SongAdapter
 import com.wernen.spotifyclone.databinding.FragmentHomeBinding
-import com.wernen.spotifyclone.others.Constants
 import com.wernen.spotifyclone.others.LoadingDialog
 import com.wernen.spotifyclone.others.Status
 import com.wernen.spotifyclone.ui.viewModel.MainViewModel
@@ -30,7 +26,7 @@ class HomeFragment : Fragment() {
     lateinit var mainViewModel: MainViewModel
 
     @Inject
-    lateinit var songAdapter: SongAdapter2
+    lateinit var songAdapter: SongAdapter
 
     val loadingDialog = LoadingDialog()
 
@@ -47,7 +43,6 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-//        binding.rvAllSongs.adapter = songAdapter
         setupRecyclerView()
         subscribeToObservers()
 

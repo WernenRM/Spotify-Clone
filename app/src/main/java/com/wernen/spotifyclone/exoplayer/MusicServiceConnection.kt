@@ -1,8 +1,8 @@
 package com.wernen.spotifyclone.exoplayer
 
+import android.annotation.SuppressLint
 import android.content.ComponentName
 import android.content.Context
-import android.media.browse.MediaBrowser
 import android.os.Bundle
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaMetadataCompat
@@ -59,6 +59,7 @@ class MusicServiceConnection(
         private val context: Context
     ) : MediaBrowserCompat.ConnectionCallback() {
 
+        @SuppressLint("LogNotTimber")
         override fun onConnected() {
             Log.d("MusicServiceConnection", "CONNECTED")
             mediaController = MediaControllerCompat(context, mediaBrowser.sessionToken).apply {
@@ -67,6 +68,7 @@ class MusicServiceConnection(
             _isConnected.postValue(Event(Resource.success(true)))
         }
 
+        @SuppressLint("LogNotTimber")
         override fun onConnectionSuspended() {
             Log.d("MusicServiceConnection", "SUSPENDED")
             _isConnected.postValue(Event(Resource.error(
@@ -74,6 +76,7 @@ class MusicServiceConnection(
             )))
         }
 
+        @SuppressLint("LogNotTimber")
         override fun onConnectionFailed() {
             Log.d("MusicServiceConnection", "FAILED")
             _isConnected.postValue(Event(Resource.error(

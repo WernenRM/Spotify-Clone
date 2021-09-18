@@ -12,7 +12,7 @@
         android:layout_height="75dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        android:contentDescription="TODO" />
 
     <com.google.android.material.textview.MaterialTextView
         android:textColor="@color/white"

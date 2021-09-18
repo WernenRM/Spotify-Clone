@@ -1,6 +1,5 @@
 package com.wernen.spotifyclone.exoplayer
 
-import android.net.Uri
 import android.support.v4.media.MediaBrowserCompat
 import android.support.v4.media.MediaBrowserCompat.MediaItem.FLAG_PLAYABLE
 import android.support.v4.media.MediaDescriptionCompat
@@ -17,7 +16,7 @@ import javax.inject.Inject
 
 class FirebaseMusicSource @Inject constructor(
     private val musicDatabase: MusicDatabase
-){
+) {
 
     var songs = emptyList<MediaMetadataCompat>()
 
@@ -25,7 +24,7 @@ class FirebaseMusicSource @Inject constructor(
         state = State.STATE_INITIALIZING
         val allSongs = musicDatabase.getAllSongs()
         songs = allSongs.map { song ->
-            MediaMetadataCompat.Builder()
+            Builder()
                 .putString(METADATA_KEY_ARTIST, song.subtitle)
                 .putString(METADATA_KEY_MEDIA_ID, song.mediaId)
                 .putString(METADATA_KEY_TITLE, song.title)
@@ -65,7 +64,7 @@ class FirebaseMusicSource @Inject constructor(
 
     private var state: State = State.STATE_CREATED
         set(value) {
-            if(value == State.STATE_INITIALIZED || value == State.STATE_ERROR) {
+            if (value == State.STATE_INITIALIZED || value == State.STATE_ERROR) {
                 synchronized(onReadyListeners) {
                     field = value
                     onReadyListeners.forEach { listener ->
@@ -78,7 +77,7 @@ class FirebaseMusicSource @Inject constructor(
         }
 
     fun whenReady(action: (Boolean) -> Unit): Boolean {
-        if(state == State.STATE_CREATED || state == State.STATE_INITIALIZING) {
+        if (state == State.STATE_CREATED || state == State.STATE_INITIALIZING) {
             onReadyListeners += action
             return false
         } else {

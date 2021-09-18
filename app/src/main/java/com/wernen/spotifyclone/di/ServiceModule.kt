@@ -1,9 +1,7 @@
 package com.wernen.spotifyclone.di
 
-import android.annotation.SuppressLint
 import android.content.Context
 import com.google.android.exoplayer2.util.Util
-
 import com.google.android.exoplayer2.C
 import com.google.android.exoplayer2.SimpleExoPlayer
 import com.google.android.exoplayer2.audio.AudioAttributes

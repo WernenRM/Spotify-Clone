@@ -29,7 +29,8 @@
         android:layout_height="56dp"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:contentDescription="TODO" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpSong"
@@ -47,5 +48,6 @@
         android:background="@color/darkBackground"
         android:src="@drawable/ic_play"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:contentDescription="TODO" />
 </androidx.constraintlayout.widget.ConstraintLayout>

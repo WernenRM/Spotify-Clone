@@ -2,7 +2,6 @@ package com.wernen.spotifyclone.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import com.wernen.spotifyclone.R
-import com.wernen.spotifyclone.adapters.SwipeSongAdapter
 import com.wernen.spotifyclone.data.entities.Song
 import com.wernen.spotifyclone.databinding.ActivityMainBinding
 import com.wernen.spotifyclone.exoplayer.toSong
@@ -12,24 +11,17 @@ import dagger.hilt.android.AndroidEntryPoint
 import android.os.Bundle
 import android.support.v4.media.session.PlaybackStateCompat
 import android.view.Window
-import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN
-import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.navigation.NavDestination
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.RequestManager
 import com.google.android.material.snackbar.Snackbar
-import com.wernen.spotifyclone.adapters.SwipeSongAdapter2
+import com.wernen.spotifyclone.adapters.SwipeSongAdapter
 import com.wernen.spotifyclone.exoplayer.isPlaying
-import com.wernen.spotifyclone.others.LoadingDialog
 import javax.inject.Inject
-import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -38,11 +30,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
 
-//    @Inject
-//    lateinit var swipeSongAdapter: SwipeSongAdapter
-
     @Inject
-    lateinit var swipeSongAdapter: SwipeSongAdapter2
+    lateinit var swipeSongAdapter: SwipeSongAdapter
 
     @Inject
     lateinit var glide: RequestManager
@@ -51,26 +40,12 @@ class MainActivity : AppCompatActivity() {
 
     private var playbackState: PlaybackStateCompat? = null
 
-    private var controller: NavController? = null
-
-
-    val listener = NavController.OnDestinationChangedListener { controller, destination, arguments ->
-        when (destination.id){
-
-            R.id.songFragment -> hideBottomBar()
-            R.id.homeFragment -> showBottomBar()
-            else -> showBottomBar()
-        }
-
-    }
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.window.setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        this.window.setFlags(FLAG_FULLSCREEN, FLAG_FULLSCREEN)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -96,7 +71,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-         //val navController = findNavController( R.id.flFragmentContainer )
         val navFragment = supportFragmentManager.findFragmentById(R.id.flFragmentContainer) as NavHostFragment
         val navController = navFragment.navController
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
@@ -135,7 +109,6 @@ class MainActivity : AppCompatActivity() {
                 when (result.status) {
                     Status.SUCCESS -> {
                         result.data?.let { songs ->
-//                            swipeSongAdapter.song = songs
 
                             swipeSongAdapter.addall(songs.toCollection(ArrayList()))
                             if (songs.isNotEmpty()) {

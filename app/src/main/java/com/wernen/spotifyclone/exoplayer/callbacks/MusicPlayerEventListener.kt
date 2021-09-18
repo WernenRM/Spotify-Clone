@@ -1,7 +1,6 @@
 package com.wernen.spotifyclone.exoplayer.callbacks
 
 import android.widget.Toast
-import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.PlaybackException
 import com.google.android.exoplayer2.Player
 import com.wernen.spotifyclone.exoplayer.MusicService

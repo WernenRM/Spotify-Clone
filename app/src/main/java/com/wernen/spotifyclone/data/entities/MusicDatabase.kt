@@ -12,7 +12,7 @@ class MusicDatabase {
     suspend fun getAllSongs(): List<Song> {
         return try {
             songCollection.get().await().toObjects(Song::class.java)
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             emptyList()
         }
     }
@@ -20,7 +20,7 @@ class MusicDatabase {
     suspend fun getFavoriteSongs(): List<FavoriteSons> {
         return try {
             songCollection.get().await().toObjects(FavoriteSons::class.java)
-        } catch(e: Exception) {
+        } catch (e: Exception) {
             emptyList()
         }
     }

@@ -1,28 +1,61 @@
 package com.wernen.spotifyclone.adapters
 
-import androidx.recyclerview.widget.AsyncListDiffer
-import com.wernen.spotifyclone.R
+import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.wernen.spotifyclone.data.entities.Song
 import com.wernen.spotifyclone.databinding.SwipeItemBinding
 
-class SwipeSongAdapter : BaseSongAdapter(R.layout.swipe_item) {
+class SwipeSongAdapter(val data: ArrayList<Song> = arrayListOf()) :
+    RecyclerView.Adapter<SwipeSongAdapter.SwipeSongViewHolder>() {
 
-    override val differ = AsyncListDiffer(this, diffCallback)
 
-    private var _binding: SwipeItemBinding? = null
-    private val binding: SwipeItemBinding get() = _binding!!
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SwipeSongViewHolder {
 
-    override fun onBindViewHolder(holder: SongViewHolder, position: Int) {
-        val song = songs[position]
-        holder.itemView.apply {
-            val text = "${song.title} - ${song.subtitle}"
-            binding.tvPrimary.text = text
+        val binding = SwipeItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
-            setOnClickListener {
-                onItemClickListener?.let { click ->
-                    click(song)
-                }
-            }
+        return SwipeSongViewHolder(binding.root)
+    }
+
+    override fun onBindViewHolder(holder: SwipeSongViewHolder, position: Int) {
+
+        val song = data[position]
+        holder.bind(song)
+
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.invoke(song)
         }
     }
 
+    override fun getItemCount(): Int {
+        return data.count()
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addall(data: ArrayList<Song>) {
+
+        this.data.addAll(data)
+
+        notifyDataSetChanged()
+    }
+
+    var onItemClickListener: ((Song) -> Unit)? = null
+
+    fun setItemClickListener(listener: (Song) -> Unit) {
+        onItemClickListener = listener
+    }
+
+    class SwipeSongViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        val binding = SwipeItemBinding.bind(itemView)
+
+        fun bind(song: Song) {
+
+            val text = "${song.title} - ${song.subtitle}"
+            binding.tvPrimary.text = text
+
+        }
+    }
 }
