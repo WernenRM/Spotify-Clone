@@ -16,8 +16,10 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.RequestManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import com.wernen.spotifyclone.adapters.SwipeSongAdapter
 import com.wernen.spotifyclone.exoplayer.isPlaying
@@ -73,6 +75,10 @@ class MainActivity : AppCompatActivity() {
 
         val navFragment = supportFragmentManager.findFragmentById(R.id.flFragmentContainer) as NavHostFragment
         val navController = navFragment.navController
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.homeBottomNavigation)
+
+        bottomNavigationView.setupWithNavController(navController)
+
         navController.addOnDestinationChangedListener { controller, destination, arguments ->
             if(destination.id == R.id.songFragment) {
                 hideBottomBar()

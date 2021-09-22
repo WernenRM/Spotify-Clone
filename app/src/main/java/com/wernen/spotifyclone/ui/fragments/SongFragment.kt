@@ -21,6 +21,7 @@ import com.wernen.spotifyclone.exoplayer.isPlaying
 import com.wernen.spotifyclone.exoplayer.toSong
 import com.wernen.spotifyclone.others.LoadingDialog
 import com.wernen.spotifyclone.others.Status
+import com.wernen.spotifyclone.ui.viewModel.FavoriteSongsViewModel
 import com.wernen.spotifyclone.ui.viewModel.MainViewModel
 import com.wernen.spotifyclone.ui.viewModel.SongViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +41,10 @@ class SongFragment : Fragment() {
     lateinit var glide: RequestManager
 
     private lateinit var mainViewModel: MainViewModel
+
     lateinit var songViewModel: SongViewModel
+
+    private lateinit var favoriteSongsViewModel: FavoriteSongsViewModel
 
 
 
@@ -69,6 +73,8 @@ class SongFragment : Fragment() {
         songViewModel = ViewModelProvider(requireActivity()).get(SongViewModel::class.java)
 
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+
+        favoriteSongsViewModel = ViewModelProvider(requireActivity()).get(FavoriteSongsViewModel::class.java)
 
         subscribeToObservers()
 
@@ -117,15 +123,16 @@ class SongFragment : Fragment() {
 
         songViewModel.hideFavorite.observe(requireActivity(), { hideBalance ->
             if (hideBalance) {
-
                 binding.imageView.setImageResource(R.drawable.ic_favorite_full)
-                favoriteSons.add(curPlayingSong)
-                val teste = 1
+                curPlayingSong?.let { favoriteSongsViewModel.listSongs(it) }
 
             } else {
                 binding.imageView.setImageResource(R.drawable.ic_favorite)
             }
         })
+
+
+
     }
 
     private fun updateTitleAndSongImage(song: Song) {

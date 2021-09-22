@@ -5,6 +5,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import com.wernen.spotifyclone.R
+import com.wernen.spotifyclone.adapters.FavoriteAdapter
 import com.wernen.spotifyclone.adapters.SongAdapter
 import com.wernen.spotifyclone.adapters.SwipeSongAdapter
 import com.wernen.spotifyclone.exoplayer.MusicServiceConnection
@@ -28,6 +29,10 @@ object AppModule {
     @Singleton
     @Provides
     fun provideSwipeSongAdapter2() = SwipeSongAdapter()
+
+    @Singleton
+    @Provides
+    fun provideFavoriteAdapter() = FavoriteAdapter()
 
     @Singleton
     @Provides

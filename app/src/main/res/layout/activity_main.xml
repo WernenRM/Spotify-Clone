@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/flFragmentContainer"
         android:name="androidx.navigation.fragment.NavHostFragment"
@@ -16,26 +17,27 @@
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@+id/vpSong"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/nav_graph" />
 
-
     <ImageView
         android:id="@+id/ivCurSongImage"
         android:layout_width="56dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="64dp"
+        android:contentDescription="TODO"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:contentDescription="TODO" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vpSong"
         android:layout_width="0dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="64dp"
         android:background="@color/darkBackground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/ivPlayPause"
@@ -45,9 +47,18 @@
         android:id="@+id/ivPlayPause"
         android:layout_width="56dp"
         android:layout_height="56dp"
+        android:layout_marginBottom="64dp"
         android:background="@color/darkBackground"
         android:src="@drawable/ic_play"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/homeBottomNavigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="TODO" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_app_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
