@@ -39,8 +39,9 @@ ViewPager
 
 Playlist personaizada pela preferencia do usuario, como musicas mais tocadas e favoritos.
 
-![tela1](https://user-images.githubusercontent.com/31323070/134267327-106fc3d2-02f2-4eeb-b2b7-b9eba008a455.PNG)
-![2](h![3](https://user-images.githubusercontent.com/31323070/134267346-baa08f94-e89c-404c-ac21-4a6d84aef096.PNG)
-ttps://user-images.githubusercontent.com/31323070/134267338-b581459b-b9e3-436a-8a20-4f6c179241a6.PNG)
 
 
+![tela1](https://user-images.githubusercontent.com/31323070/134267457-548ff483-2406-407c-869b-81e46b86bada.PNG)
+![3](https://user-images.githubusercontent.com/31323070/134267482-fdc75826-4dc1-46ae-a61d-8c290ca44690.PNG)
+
+![2](https://user-images.githubusercontent.com/31323070/134267467-723a3254-6b26-4850-886d-4b1111eb8412.PNG)
